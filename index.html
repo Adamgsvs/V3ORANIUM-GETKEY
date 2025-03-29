@@ -1,474 +1,369 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oranium Keys</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
-        
-        body {
-            background: #0f0f1a;
-            color: #fff;
-            overflow-x: hidden;
-            position: relative;
-        }
-        
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            animation: fadeIn 1.5s ease;
-        }
-        
-        .logo {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #6e45e2, #88d3ce);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-        
-        .steps-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .step {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 2rem;
-            flex: 1;
-            min-width: 300px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: slideUp 1s ease;
-        }
-        
-        .step:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .step-number {
-            background: linear-gradient(45deg, #6e45e2, #88d3ce);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-        }
-        
-        .step-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #6e45e2;
-        }
-        
-        .step-description {
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            opacity: 0.8;
-        }
-        
-        .btn {
-            background: linear-gradient(45deg, #6e45e2, #88d3ce);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(110, 69, 226, 0.3);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid #6e45e2;
-            color: #6e45e2;
-        }
-        
-        .text-box {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            transition: border 0.3s ease;
-        }
-        
-        .text-box:focus {
-            outline: none;
-            border: 2px solid #6e45e2;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        .success-message {
-            color: #4CAF50;
-            font-weight: bold;
-            margin-top: 1rem;
-            text-align: center;
-            animation: pulse 2s infinite;
-        }
-        
-        .key-display {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1.5rem;
-            border-radius: 10px;
-            font-family: monospace;
-            font-size: 1.2rem;
-            text-align: center;
-            margin-top: 2rem;
-            border: 1px dashed #6e45e2;
-            animation: glow 2s infinite alternate;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
-        
-        @keyframes glow {
-            from { box-shadow: 0 0 5px rgba(110, 69, 226, 0.5); }
-            to { box-shadow: 0 0 20px rgba(110, 69, 226, 0.8); }
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 5rem;
-            padding: 2rem 0;
-            opacity: 0.6;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .steps-container {
-                flex-direction: column;
-            }
-            
-            .logo {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>Oranium Executor - أفضل إكسكيوتور لروبلوكس</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="http://i.ibb.co/4n9xXX5k/Picsart-25-03-20-14-29-14-450-removebg-preview.png" type="image/png">
 </head>
 <body>
+
+    <!-- شريط التنقل المتحرك -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="http://i.ibb.co/4n9xXX5k/Picsart-25-03-20-14-29-14-450-removebg-preview.png" alt="Oranium Logo">
+            <span>Oranium Executor</span>
+        </div>
+        <div class="menu">
+            <a href="#home" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="#features" class="nav-link"><i class="fas fa-star"></i> الميزات</a>
+            <a href="#faq" class="nav-link"><i class="fas fa-question-circle"></i> الأسئلة</a>
+            <a href="#download" class="nav-link"><i class="fas fa-download"></i> التنزيل</a>
+        </div>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- خلفية الجسيمات المتحركة -->
     <div id="particles-js"></div>
-    
-    <div class="container">
-        <header>
-            <h1 class="logo">Oranium Keys</h1>
-            <p class="subtitle">احصل على مفتاحك الخاص بعد إتمام الخطوات</p>
-        </header>
-        
-        <div class="steps-container">
-            <div class="step" id="step1">
-                <div class="step-number">1</div>
-                <h2 class="step-title">الخطوة الأولى</h2>
-                <p class="step-description">
-                    قم بمتابعة حسابي على روبلوكس للتحقق من أنك لست روبوت
-                </p>
-                <a href="https://www.roblox.com/ar/users/1527285140/profile?friendshipSourceType=PlayerSearch" target="_blank" class="btn">
-                    انتقل إلى حساب روبلوكس
+
+    <!-- القسم الرئيسي مع تأثيرات متحركة -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title animate-pop-in">
+                <span class="gradient-text">Oranium Executor</span>
+                <span class="subtitle">قوة جديدة في عالم روبلوكس</span>
+            </h1>
+            <p class="hero-description animate-pop-in">أقوى وأسرع إكسكيوتور لروبلوكس مع واجهة سهلة الاستخدام وميزات متقدمة</p>
+            
+            <div class="cta-buttons animate-pop-in">
+                <a href="assets/downloads/RealeseOranium.zip" class="download-btn" id="downloadBtn" download="Oranium_Executor">
+                    <span>تنزيل الآن</span>
+                    <i class="fas fa-download"></i>
                 </a>
-                <p class="step-description" style="margin-top: 1rem;">
-                    بعد المتابعة، اضغط على زر التحقق
-                </p>
-                <button class="btn btn-secondary" id="verifyFollow" style="margin-top: 1rem;">
-                    تحقق من المتابعة
-                </button>
-                <p id="followSuccess" class="success-message hidden">
-                    ✓ تم التحقق بنجاح!
-                </p>
+                <a href="#features" class="watch-btn">
+                    <i class="fas fa-play"></i> شاهد الفيديو
+                </a>
             </div>
             
-            <div class="step" id="step2">
-                <div class="step-number">2</div>
-                <h2 class="step-title">الخطوة الثانية</h2>
-                <p class="step-description">
-                    اكتب الجملة التالية في الصندوق أدناه لإثبات أنك بشر:
-                </p>
-                <p style="background: rgba(110, 69, 226, 0.2); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    Oranium is the best
-                </p>
-                <input type="text" class="text-box" id="verificationText" placeholder="اكتب الجملة هنا...">
-                <button class="btn" id="verifyText">
-                    تحقق
-                </button>
-                <p id="textSuccess" class="success-message hidden">
-                    ✓ تم التحقق بنجاح!
-                </p>
+            <div class="stats animate-fade-in">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="100000">0</div>
+                    <div class="stat-label">مستخدم نشط</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="99">0</div>
+                    <div class="stat-label">% نسبة الأمان</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="24">0</div>
+                    <div class="stat-label">ساعة دعم فني</div>
+                </div>
             </div>
         </div>
         
-        <div id="keyResult" class="hidden">
-            <div class="key-display">
-                <p>تهانينا! لقد أكملت جميع الخطوات بنجاح</p>
-                <p style="margin-top: 1rem;">مفتاحك هو: <span id="generatedKey">ORAN-<span id="keyPart"></span></span></p>
-                <button class="btn" id="copyKey" style="margin-top: 1rem;">
-                    نسخ المفتاح
+        <div class="hero-image animate-slide-in">
+            <img src="http://i.ibb.co/4n9xXX5k/Picsart-25-03-20-14-29-14-450-removebg-preview.png" alt="Oranium Screenshot">
+        </div>
+    </section>
+
+    <!-- قسم الميزات مع تأثيرات حركية -->
+    <section class="features-section" id="features">
+        <div class="section-header">
+            <h2 class="section-title">ميزات <span class="highlight">فريدة</span></h2>
+            <p class="section-subtitle">اكتشف ما يجعل Oranium مختلفًا عن البقية</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card animate-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">أداء سريع</h3>
+                <p class="feature-description">تنفيذ سكربتات بسرعة فائقة بدون تأخير أو تجميد</p>
+            </div>
+            
+            <div class="feature-card animate-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">حماية كاملة</h3>
+                <p class="feature-description">نظام حماية متقدم ضد الاكتشاف والحظر</p>
+            </div>
+            
+            <div class="feature-card animate-card">
+                <div class="feature-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3 class="feature-title">تحديثات دورية</h3>
+                <p class="feature-description">تحديثات مستمرة لدعم أحدث إصدارات روبلوكس</p>
+            </div>
+            
+            <div class="feature-card animate-card">
+                <div class="feature-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="feature-title">دعم Lua الكامل</h3>
+                <p class="feature-description">تنفيذ جميع أوامر Lua بدون قيود</p>
+            </div>
+            
+            <div class="feature-card animate-card">
+                <div class="feature-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3 class="feature-title">واجهة جميلة</h3>
+                <p class="feature-description">تصميم حديث سهل الاستخدام مع تخصيص كامل</p>
+            </div>
+            
+            <div class="feature-card animate-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 class="feature-title">دعم فني</h3>
+                <p class="feature-description">فريق دعم فني متاح 24/7 لمساعدتك</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأسئلة الشائعة مع تأثيرات متحركة -->
+    <section class="faq-section" id="faq">
+        <div class="section-header">
+            <h2 class="section-title">أسئلة <span class="highlight">شائعة</span></h2>
+            <p class="section-subtitle">إجابات على أكثر الأسئلة تداولاً</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-card animate-card">
+                <div class="faq-question">
+                    <h3>هل Oranium مجاني للاستخدام؟</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>نعم، Oranium Executor مجاني بالكامل مع جميع الميزات المتاحة. نحن نقدم نسخة ممتازة اختيارية مع ميزات إضافية.</p>
+                </div>
+            </div>
+            
+            <div class="faq-card animate-card">
+                <div class="faq-question">
+                    <h3>كيف أضمن عدم حظري في روبلوكس؟</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oranium يحتوي على نظام حماية متطور، لكن ننصح بعدم المبالغة في استخدام السكربتات الواضحة لتجنب الاكتشاف.</p>
+                </div>
+            </div>
+            
+            <div class="faq-card animate-card">
+                <div class="faq-question">
+                    <h3>ما هي متطلبات تشغيل Oranium؟</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>يعمل على Windows 7/8/10/11 مع .NET Framework 4.8 أو أحدث. يحتاج إلى 2GB RAM كحد أدنى واتصال بالإنترنت للتفعيل.</p>
+                </div>
+            </div>
+            
+            <div class="faq-card animate-card">
+                <div class="faq-question">
+                    <h3>هل يدعم Oranium جميع ألعاب روبلوكس؟</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>يدعم معظم الألعاب الشهيرة ونعمل باستمرار على إضافة دعم لألعاب جديدة مع كل تحديث.</p>
+                </div>
+            </div>
+            
+            <div class="faq-card animate-card">
+                <div class="faq-question">
+                    <h3>كيف يمكنني الإبلاغ عن مشكلة أو اقتراح تحسين؟</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>يمكنك التواصل مع فريق الدعم عبر سيرفر الديسكورد الرسمي أو عبر صفحة الاتصال في الموقع.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التنزيل مع تأثيرات خاصة -->
+    <section class="download-section" id="download">
+        <div class="download-container">
+            <div class="download-info animate-card">
+                <h2 class="download-title">جاهز <span class="highlight">للتنزيل؟</span></h2>
+                <p class="download-subtitle">انضم إلى آلاف المستخدمين الذين يختبرون قوة Oranium الآن!</p>
+                
+                <div class="download-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>نزّل الملف</h3>
+                            <p>اضغط على زر التنزيل لتحميل Oranium Executor</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>فك الضغط</h3>
+                            <p>استخدم برنامج مثل WinRAR لاستخراج الملفات</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>شغّل البرنامج</h3>
+                            <p>افتح Oranium.exe واتبع التعليمات البسيطة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="download-box animate-card">
+                <div class="version-info">
+                    <div class="version-badge">الإصدار 2.5.3</div>
+                    <div class="update-date">تم التحديث: 15 يونيو 2025</div>
+                </div>
+                
+                <div class="file-info">
+                    <div class="file-icon">
+                        <i class="fas fa-file-archive"></i>
+                    </div>
+                    <div class="file-details">
+                        <h3>RealeseOranium.zip</h3>
+                        <p>حجم الملف: 15.7 MB</p>
+                    </div>
+                </div>
+                
+                <a href="e" class="big-download-btn" download="e" type="exe">
+                    يوجد مشكلة بل زر سيتم حلها قريبا
+                    </i>
+                </a>
+                
+                <div class="requirements">
+                    <h4>متطلبات النظام:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Windows 7 أو أحدث</li>
+                        <li><i class="fas fa-check"></i> 2GB RAM كحد أدنى</li>
+                        <li><i class="fas fa-check"></i> .NET Framework 4.8</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الفيديوهات التوضيحية -->
+    <section class="video-section">
+        <div class="section-header">
+            <h2 class="section-title">شاهد <span class="highlight">Oranium</span> في العمل</h2>
+            <p class="section-subtitle">تعرف على كيفية استخدام Oranium Executor بفعالية</p>
+        </div>
+        
+        <div class="video-container">
+            <div class="video-wrapper animate-card">
+                <div class="video-thumbnail">
+                    <img src="assets/images/screenshot2.png" alt="Video Thumbnail">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3 class="video-title">شرح استخدام Oranium للمبتدئين</h3>
+            </div>
+            
+            <div class="video-wrapper animate-card">
+                <div class="video-thumbnail">
+                    <img src="assets/images/screenshot1.png" alt="Video Thumbnail">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <h3 class="video-title">أفضل السكربتات لـ Oranium</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاشتراك في النشرة البريدية -->
+    <section class="newsletter-section">
+        <div class="newsletter-container animate-card">
+            <div class="newsletter-info">
+                <h2 class="newsletter-title">ابقَ على اطلاع</h2>
+                <p class="newsletter-subtitle">اشترك في نشرتنا البريدية لتصلك آخر التحديثات والعروض</p>
+            </div>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="بريدك الإلكتروني" required>
+                <button type="submit">
+                    <span>اشترك الآن</span>
+                    <i class="fas fa-paper-plane"></i>
                 </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- الفوتر مع تأثيرات متحركة -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section animate-card">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="Oranium Logo">
+                    <span>Oranium Executor</span>
+                </div>
+                <p class="footer-description">أقوى إكسكيوتور لروبلوكس مع ميزات متقدمة وأداء لا مثيل له</p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section animate-card">
+                <h3 class="footer-title">روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                    <li><a href="#features"><i class="fas fa-chevron-left"></i> الميزات</a></li>
+                    <li><a href="#faq"><i class="fas fa-chevron-left"></i> الأسئلة الشائعة</a></li>
+                    <li><a href="#download"><i class="fas fa-chevron-left"></i> التنزيل</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section animate-card">
+                <h3 class="footer-title">الدعم الفني</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> تواصل معنا</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i] الإبلاغ عن مشكلة</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left"></i> شروط الاستخدام</a></li>
+                </ul>
             </div>
         </div>
         
-        <footer>
-            © 2025 Oranium Keys. جميع الحقوق محفوظة.
-        </footer>
+        <div class="footer-bottom animate-card">
+            <p>&copy; 2025 Oranium Executor. جميع الحقوق محفوظة.</p>
+            <p>تم التطوير بكل ❤️ لمحبي روبلوكس</p>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <a href="#home" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- نافذة التنزيل العائم -->
+    <div class="floating-download animate-card">
+        <div class="floating-content">
+            <i class="fas fa-download"></i>
+            <span>جاهز للتنزيل؟</span>
+        </div>
+        <a href="RealeseOranium.zip" class="floating-btn" download>نزّل الآن</a>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        // تهيئة تأثير الجسيمات
-        document.addEventListener('DOMContentLoaded', function() {
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": {
-                        "value": 80,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
-                    },
-                    "color": {
-                        "value": "#6e45e2"
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        },
-                        "polygon": {
-                            "nb_sides": 5
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.5,
-                        "random": false,
-                        "anim": {
-                            "enable": false,
-                            "speed": 1,
-                            "opacity_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "size": {
-                        "value": 3,
-                        "random": true,
-                        "anim": {
-                            "enable": false,
-                            "speed": 40,
-                            "size_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 150,
-                        "color": "#6e45e2",
-                        "opacity": 0.4,
-                        "width": 1
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 2,
-                        "direction": "none",
-                        "random": false,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": false,
-                            "rotateX": 600,
-                            "rotateY": 1200
-                        }
-                    }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true,
-                            "mode": "grab"
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "grab": {
-                            "distance": 140,
-                            "line_linked": {
-                                "opacity": 1
-                            }
-                        },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
-                        },
-                        "repulse": {
-                            "distance": 200,
-                            "duration": 0.4
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        },
-                        "remove": {
-                            "particles_nb": 2
-                        }
-                    }
-                },
-                "retina_detect": true
-            });
-            
-            // التحقق من المتابعة مع الضغط المزدوج
-            let clickCount = 0;
-            
-            document.getElementById('verifyFollow').addEventListener('click', function() {
-                clickCount++;
-                
-                if (clickCount === 1) {
-                    // أول ضغط - تغيير نص الزر وإضافة تأثير
-                    this.textContent = 'اضغط مرة أخرى للتأكيد';
-                    this.style.background = 'linear-gradient(45deg, #ff9800, #ff5722)';
-                    
-                    // إعادة تعيين العداد بعد 3 ثواني إذا لم يتم الضغط مرة ثانية
-                    setTimeout(() => {
-                        if (clickCount === 1) {
-                            clickCount = 0;
-                            this.textContent = 'تحقق من المتابعة';
-                            this.style.background = 'linear-gradient(45deg, #6e45e2, #88d3ce)';
-                        }
-                    }, 3000);
-                } 
-                else if (clickCount === 2) {
-                    // ثاني ضغط - تنفيذ التحقق
-                    document.getElementById('followSuccess').classList.remove('hidden');
-                    this.disabled = true;
-                    checkSteps();
-                }
-            });
-            
-            // التحقق من النص
-            document.getElementById('verifyText').addEventListener('click', function() {
-                const text = document.getElementById('verificationText').value.trim();
-                if(text.toLowerCase() === 'oranium is the best') {
-                    document.getElementById('textSuccess').classList.remove('hidden');
-                    this.disabled = true;
-                    checkSteps();
-                } else {
-                    alert('الرجاء كتابة الجملة الصحيحة!');
-                }
-            });
-            
-            // نسخ المفتاح
-            document.getElementById('copyKey').addEventListener('click', function() {
-                const key = document.getElementById('generatedKey').innerText;
-                navigator.clipboard.writeText(key).then(() => {
-                    alert('تم نسخ المفتاح إلى الحافظة!');
-                });
-            });
-            
-            // توليد مفتاح عشوائي
-            function generateRandomKey() {
-                const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-                let result = '';
-                for (let i = 0; i < 6; i++) {
-                    result += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
-                return result;
-            }
-            
-            // التحقق من إتمام الخطوات
-            function checkSteps() {
-                const followVerified = document.getElementById('followSuccess').classList.contains('hidden') === false;
-                const textVerified = document.getElementById('textSuccess').classList.contains('hidden') === false;
-                
-                if(followVerified && textVerified) {
-                    document.getElementById('keyPart').textContent = generateRandomKey();
-                    document.getElementById('keyResult').classList.remove('hidden');
-                    
-                    // تأثيرات عند ظهور المفتاح
-                    const keyDisplay = document.querySelector('.key-display');
-                    keyDisplay.style.animation = 'none';
-                    void keyDisplay.offsetWidth; // Trigger reflow
-                    keyDisplay.style.animation = 'glow 2s infinite alternate, slideUp 1s ease';
-                }
-            }
-        });
-    </script>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </body>
 </html>
