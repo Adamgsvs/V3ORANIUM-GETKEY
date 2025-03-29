@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oranium Keys</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background: #0f0f1a;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #6e45e2, #88d3ce);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 300px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 1s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .step-number {
+            background: linear-gradient(45deg, #6e45e2, #88d3ce);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #6e45e2;
+        }
+        
+        .step-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #6e45e2, #88d3ce);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(110, 69, 226, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #6e45e2;
+            color: #6e45e2;
+        }
+        
+        .text-box {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: border 0.3s ease;
+        }
+        
+        .text-box:focus {
+            outline: none;
+            border: 2px solid #6e45e2;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .success-message {
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 1rem;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        
+        .key-display {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-top: 2rem;
+            border: 1px dashed #6e45e2;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 5px rgba(110, 69, 226, 0.5); }
+            to { box-shadow: 0 0 20px rgba(110, 69, 226, 0.8); }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem 0;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .steps-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="logo">Oranium Keys</h1>
+            <p class="subtitle">احصل على مفتاحك الخاص بعد إتمام الخطوات</p>
+        </header>
+        
+        <div class="steps-container">
+            <div class="step" id="step1">
+                <div class="step-number">1</div>
+                <h2 class="step-title">الخطوة الأولى</h2>
+                <p class="step-description">
+                    قم بمتابعة حسابي على روبلوكس للتحقق من أنك لست روبوت
+                </p>
+                <a href="https://www.roblox.com/ar/users/1527285140/profile?friendshipSourceType=PlayerSearch" target="_blank" class="btn">
+                    انتقل إلى حساب روبلوكس
+                </a>
+                <p class="step-description" style="margin-top: 1rem;">
+                    بعد المتابعة، اضغط على زر التحقق
+                </p>
+                <button class="btn btn-secondary" id="verifyFollow" style="margin-top: 1rem;">
+                    تحقق من المتابعة
+                </button>
+                <p id="followSuccess" class="success-message hidden">
+                    ✓ تم التحقق بنجاح!
+                </p>
+            </div>
+            
+            <div class="step" id="step2">
+                <div class="step-number">2</div>
+                <h2 class="step-title">الخطوة الثانية</h2>
+                <p class="step-description">
+                    اكتب الجملة التالية في الصندوق أدناه لإثبات أنك بشر:
+                </p>
+                <p style="background: rgba(110, 69, 226, 0.2); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    Oranium is the best
+                </p>
+                <input type="text" class="text-box" id="verificationText" placeholder="اكتب الجملة هنا...">
+                <button class="btn" id="verifyText">
+                    تحقق
+                </button>
+                <p id="textSuccess" class="success-message hidden">
+                    ✓ تم التحقق بنجاح!
+                </p>
+            </div>
+        </div>
+        
+        <div id="keyResult" class="hidden">
+            <div class="key-display">
+                <p>تهانينا! لقد أكملت جميع الخطوات بنجاح</p>
+                <p style="margin-top: 1rem;">مفتاحك هو: <span id="generatedKey">ORAN-<span id="keyPart"></span></span></p>
+                <button class="btn" id="copyKey" style="margin-top: 1rem;">
+                    نسخ المفتاح
+                </button>
+            </div>
+        </div>
+        
+        <footer>
+            © 2025 Oranium Keys. جميع الحقوق محفوظة.
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // تهيئة تأثير الجسيمات
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#6e45e2"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#6e45e2",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+            
+            // التحقق من المتابعة مع الضغط المزدوج
+            let clickCount = 0;
+            
+            document.getElementById('verifyFollow').addEventListener('click', function() {
+                clickCount++;
+                
+                if (clickCount === 1) {
+                    // أول ضغط - تغيير نص الزر وإضافة تأثير
+                    this.textContent = 'اضغط مرة أخرى للتأكيد';
+                    this.style.background = 'linear-gradient(45deg, #ff9800, #ff5722)';
+                    
+                    // إعادة تعيين العداد بعد 3 ثواني إذا لم يتم الضغط مرة ثانية
+                    setTimeout(() => {
+                        if (clickCount === 1) {
+                            clickCount = 0;
+                            this.textContent = 'تحقق من المتابعة';
+                            this.style.background = 'linear-gradient(45deg, #6e45e2, #88d3ce)';
+                        }
+                    }, 3000);
+                } 
+                else if (clickCount === 2) {
+                    // ثاني ضغط - تنفيذ التحقق
+                    document.getElementById('followSuccess').classList.remove('hidden');
+                    this.disabled = true;
+                    checkSteps();
+                }
+            });
+            
+            // التحقق من النص
+            document.getElementById('verifyText').addEventListener('click', function() {
+                const text = document.getElementById('verificationText').value.trim();
+                if(text.toLowerCase() === 'oranium is the best') {
+                    document.getElementById('textSuccess').classList.remove('hidden');
+                    this.disabled = true;
+                    checkSteps();
+                } else {
+                    alert('الرجاء كتابة الجملة الصحيحة!');
+                }
+            });
+            
+            // نسخ المفتاح
+            document.getElementById('copyKey').addEventListener('click', function() {
+                const key = document.getElementById('generatedKey').innerText;
+                navigator.clipboard.writeText(key).then(() => {
+                    alert('تم نسخ المفتاح إلى الحافظة!');
+                });
+            });
+            
+            // توليد مفتاح عشوائي
+            function generateRandomKey() {
+                const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+                let result = '';
+                for (let i = 0; i < 6; i++) {
+                    result += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                return result;
+            }
+            
+            // التحقق من إتمام الخطوات
+            function checkSteps() {
+                const followVerified = document.getElementById('followSuccess').classList.contains('hidden') === false;
+                const textVerified = document.getElementById('textSuccess').classList.contains('hidden') === false;
+                
+                if(followVerified && textVerified) {
+                    document.getElementById('keyPart').textContent = generateRandomKey();
+                    document.getElementById('keyResult').classList.remove('hidden');
+                    
+                    // تأثيرات عند ظهور المفتاح
+                    const keyDisplay = document.querySelector('.key-display');
+                    keyDisplay.style.animation = 'none';
+                    void keyDisplay.offsetWidth; // Trigger reflow
+                    keyDisplay.style.animation = 'glow 2s infinite alternate, slideUp 1s ease';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
